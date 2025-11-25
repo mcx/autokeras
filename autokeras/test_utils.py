@@ -45,14 +45,15 @@ COLUMN_TYPES = {
     "embark_town": "categorical",
     "alone": "categorical",
 }
-TRAIN_DATA_URL = "https://storage.googleapis.com/tf-datasets/titanic/train.csv"
-TEST_DATA_URL = "https://storage.googleapis.com/tf-datasets/titanic/eval.csv"
 
-TRAIN_CSV_PATH = keras.utils.get_file(
-    fname=os.path.basename(TRAIN_DATA_URL), origin=TRAIN_DATA_URL
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Use pre-split CSVs stored under benchmark/datasets to avoid downloads and
+# processing at import time.
+TRAIN_CSV_PATH = os.path.join(
+    ROOT_DIR, "benchmark", "datasets", "titanic_train.csv"
 )
-TEST_CSV_PATH = keras.utils.get_file(
-    fname=os.path.basename(TEST_DATA_URL), origin=TEST_DATA_URL
+TEST_CSV_PATH = os.path.join(
+    ROOT_DIR, "benchmark", "datasets", "titanic_test.csv"
 )
 
 
